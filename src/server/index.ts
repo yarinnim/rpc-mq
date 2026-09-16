@@ -127,8 +127,10 @@ export default function startRpcServer(
   const { connection, middlewares, logger } = props;
   loggerPrv = logger || false;
   return connection.createChannel()
+    .then((channel: Channel) => channel
+      .assertQueue(service, { durable: true })
+      .then(() => channel))
     .then((channel: Channel) => {
-      channel.assertQueue(service, { durable: false });
       channel.prefetch(1);
       return startConsuming({
         channel,
