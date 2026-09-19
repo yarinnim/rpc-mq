@@ -14,24 +14,8 @@ A lightweight and efficient Remote Procedure Call (RPC) package built on top of 
 
 ## Installation
 
-Add the package to your `package.json`:
-
-```json
-{
-  "dependencies": {
-    "@core/rpc": "^1.0.0",
-  }
-}
-```
-
-Add the package reference to your `tsconfig.json`:
-
-```json
-{
-  "references": [
-    {"path": "../../packages/rpc"}
-  ]
-}
+```bash
+$> npm install rpc-mq
 ```
 
 ## Usage
@@ -39,7 +23,7 @@ Add the package reference to your `tsconfig.json`:
 ### Server Setup
 
 ```typescript
-import { server } from '@core/rpc';
+import { server } from 'rpc-mq';
 import amqp from 'amqplib';
 
 // Define your RPC handlers
@@ -70,7 +54,7 @@ await server('user-service', handlers, { connection });
 ### Client Setup
 
 ```typescript
-import { client } from '@core/rpc';
+import { client } from 'rpc-mq';
 import amqp from 'amqplib';
 
 // Create RabbitMQ connection
